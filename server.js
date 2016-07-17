@@ -11,7 +11,7 @@ io.on('connection', function(socket) {
 	console.log('User connected via socket.io!');
 
 	socket.on('message', function(message) {
-		console.log('Message received ' + message.text);
+		console.log('Message received: ' + message.text);
 
 		socket.broadcast.emit('message', message);
 	});
