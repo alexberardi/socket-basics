@@ -17,14 +17,14 @@ socket.on('connect', function() {
 });
 
 socket.on('message', function(message) {
-	console.log('New message: ');
-	console.log(message.text);
-
 	var momentTimestamp = moment.utc(message.timestamp);
-	var $message = jQuery('.messages');
+	var $messages = jQuery('.messages');
+	var $message = jQuery('<li class="list-group-item"></li>');
 
-	$message.append('<p><strong>' + message.name + ' ' + momentTimestamp.local().format('MMM Do, YYYY h:mm:ssa')  +  '</strong></p>')
-	$message.append('<p> ' + message.text + '</p>')
+
+	$message.append('<p><strong>' + message.name + ' ' + momentTimestamp.local().format('h:mma')  +  '</strong></p>');
+	$message.append('<p> ' + message.text + '</p>');
+	$messages.append($message);
 });
 
 //Handles submitting of new message
